@@ -232,7 +232,7 @@ CApplication::ProcessEvents (CWindow * AWindow)
        };
        */ 
     };
-  usleep(100000);
+  usleep(10000);
   return false;
 };
 
@@ -361,7 +361,7 @@ CApplication::ProcessEvents (void)
         
      }
  */ 
-  usleep(100000);
+  usleep(10000);
   return 0;
 }
 
