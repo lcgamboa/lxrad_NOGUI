@@ -140,6 +140,7 @@ CApplication::ADestroyWindow (CWindow * AWindow)
 	  XSynchronize (ADisplay, false);
 #endif
           Exit = true;
+          exit(0);
 	  return;
 	}
       else

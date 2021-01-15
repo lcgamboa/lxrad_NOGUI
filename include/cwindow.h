@@ -67,6 +67,7 @@ protected:
   void CreatePixmap(bool draw=false);
   void DestroyPixmap(void);
   bool PixmapBuffer;
+  int show;
 public:
   bool HasMenu;//FIXME tornar privado
     CWindow (void);

@@ -51,6 +51,7 @@ CWindow::CWindow (void)
   PHeight=0;
   SetBorder (1);
   Visible = 1;
+  show = 0;
   Title = "LXRAD Window";
   WParent=NULL;
   WPixmap = 0;
@@ -64,7 +65,7 @@ CWindow::CWindow (void)
   EvOnHide = NULL;
   EvOnEnter = NULL;
   EvOnLeave = NULL;
-
+  
 }
 
 CWindow::~CWindow (void)
@@ -75,12 +76,13 @@ CWindow::~CWindow (void)
 void
 CWindow::WCreate (CWindow* window)
 {
+  WWindow = Application->GetAWindowCount ()+2;
+ 
   ADepth = Application->GetADepth ();
   //ADefaultRootWindow = Application->GetADefaultRootWindow ();
   ABlackColor = Application->GetABlackColor ();
   AWhiteColor = Application->GetAWhiteColor ();
   
-
   Win = this;
   CreatePixmap(); 
   WPaint.Create (this);
@@ -196,8 +198,12 @@ CWindow::Show (void)
 {
   if(Win != NULL)
     {
+      if(!show)
+      {
+	on_show ();
+        show=1;
+      }
       SetVisible (true);
-      on_show ();
       Draw();
       Update ();
     }
@@ -215,7 +221,12 @@ CWindow::ShowExclusive (void)
 void
 CWindow::Hide (void)
 {
-   on_hide ();
+   if(show)
+   {
+     on_hide ();
+     show=0;
+     SetVisible (false);
+   }
 }
 
 void
