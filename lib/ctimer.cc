@@ -132,11 +132,11 @@ CTimer::SetRunState (bool run)
   if (Run != run)
     {
       if (run)
-      {
-	  Application->AddTimer(this);
+      {     
+    	  Application->AddTimer(this);
       }
       else
-      {
+      {      
 	  Application->RemoveTimer(this);
       }
       Run = run;

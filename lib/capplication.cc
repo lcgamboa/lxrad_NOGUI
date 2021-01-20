@@ -58,7 +58,7 @@ CApplication::~CApplication (void)
   if (ColorTable)
     delete[]ColorTable;
   ColorTable = NULL;
-};
+}
 
 void
 CApplication::Start (void)
@@ -70,9 +70,9 @@ CApplication::Start (void)
       eprint("Error : setlocale() !\n");
       Exit = true;
       return;
-    };
+    }
 
-};
+}
 
 void
 CApplication::ACreateWindow (CWindow * AWindow,CWindow *window)
@@ -81,7 +81,7 @@ CApplication::ACreateWindow (CWindow * AWindow,CWindow *window)
     {
       AWindow->CControl::Destroy ();
       return;
-    };
+    }
   if (AWindowCount == -1)
     AWindow->SetVisible (true,false);
   AWindow->WCreate (window);
@@ -95,7 +95,7 @@ CApplication::ACreateWindow (CWindow * AWindow,CWindow *window)
     delete[]AWindowList;
   AWindowList = WindowList;
   AWindow->Draw ();
-};
+}
 
 void
 CApplication::Draw (void)
@@ -105,7 +105,7 @@ CApplication::Draw (void)
  else
   for (int i = 0; i <= AWindowCount; i++)
    AWindowList[i]->Draw ();
-};
+}
 
 void
 CApplication::Update (void)
@@ -115,7 +115,7 @@ CApplication::Update (void)
  else
   for (int i = 0; i <= AWindowCount; i++)
    AWindowList[i]->Update ();
-};
+}
 
 void
 CApplication::ADestroyWindow (CWindow * AWindow)
@@ -131,16 +131,11 @@ CApplication::ADestroyWindow (CWindow * AWindow)
       {
        AWindowList[r]->SetCanDestroy (true);
        AWindowList[r]->WDestroy ();
-      };
+      }
      delete[]AWindowList;
      AWindowList = NULL;
      eprint ("...Application Finished\n");
-#ifdef _DEBUG
-	  eprint("synchronize\n");
-	  XSynchronize (ADisplay, false);
-#endif
           Exit = true;
-          exit(0);
 	  return;
 	}
       else
@@ -156,10 +151,10 @@ CApplication::ADestroyWindow (CWindow * AWindow)
 		AWindowList[c] = AWindowList[c + 1];
 	      AWindowList[AWindowCount] = NULL;
 	      AWindowCount--;
-	    };
-	};
-    };
-};
+	    }
+	}
+    }
+}
 
 
 bool
@@ -182,10 +177,10 @@ CApplication::ProcessEvents (CWindow * AWindow)
 	  WHint(HintControl->GetHint(),
     	    HintX+HintControl->GetWin()->GetX(),
      	    HintY+HintControl->GetWin()->GetY());
-	  };
+	  }
 	  HintControl=NULL;
         }
-     };
+     }
       HintControl=NULL;
       
       usleep(100000);
@@ -201,8 +196,8 @@ CApplication::ProcessEvents (CWindow * AWindow)
 	    {
 	      wn = e;
 	      break;
-	    };
-	};
+	    }
+	}
 
       if (((AEvent.type == EnterNotify) || (AEvent.type == Expose))
 	  && (AWindowCount >= 0) && (wn >= 0))
@@ -228,14 +223,14 @@ CApplication::ProcessEvents (CWindow * AWindow)
 	      AWindow->WEvents (AEvent);
 	      return true;
 	    }
-	};
+	}
 		
-       };
+       }
        */ 
-    };
+    }
   usleep(10000);
   return false;
-};
+}
 
 
 
@@ -254,7 +249,7 @@ CApplication::Load (void)
 
 
       return;
-    };
+    }
 
 
   //int wn = 0;
@@ -275,8 +270,7 @@ CApplication::ProcessEvents (void)
  long int elapsed;
  static int trun=0;
 
-
-   if(!trun)
+   if((!trun)&&(!Exit))
    {
      trun = 1;	   
 
@@ -290,9 +284,9 @@ CApplication::ProcessEvents (void)
      if (elapsed >= TimerList[t]->GetTime ())
       {
        //printf("===>>Timer %i reseted\n",t);	       
-       TimerList[t]->on_time ();
        TimerList[t]->tv = tv;
        TimerList[t]->SetOverTime (elapsed - TimerList[t]->GetTime ());
+       TimerList[t]->on_time ();
       }
     }
 
@@ -323,7 +317,7 @@ CApplication::ProcessEvents (void)
 	    WHint(HintControl->GetHint(),
     	    HintX+HintControl->GetWin()->GetX(),
      	    HintY+HintControl->GetWin()->GetY());
-	  };
+	  }
 	  HintControl=NULL;
         }
         return false;
@@ -344,7 +338,7 @@ CApplication::ProcessEvents (void)
 	  {
 	    wn = e;
 	    break;
-	  };
+	  }
       if (wn >= 0)
 	AWindowList[wn]->WEvents (AEvent);
 
@@ -358,7 +352,7 @@ CApplication::ProcessEvents (void)
 	      if (Exit)
 		return 1;
 	      break;
-	    };
+	    }
         
      }
  */ 
@@ -371,7 +365,7 @@ bool
 CApplication::GetExit (void)
 {
  return Exit;
-};
+}
 
 //properties
 
@@ -379,57 +373,57 @@ int
 CApplication::GetAWindowCount (void)
 {
  return AWindowCount;
-};
+}
 
 CWindow *
 CApplication::GetAWindow (uint window)
 {
   return AWindowList[window];
-};
+}
 
 int
 CApplication::GetTag ()
 {
  return Tag;
-};
+}
 
 void
 CApplication::SetTag (int x)
 {
  Tag = x;
-};
+}
 
 lxString
 CApplication::GetTitle (void)
 {
  return Title;
-};
+}
 
 /*
 int *
 CApplication::GetADefaultRootWindow (void)
 {
   return &ADefaultRootWindow;
-};
+}
 */
     
 int *
 CApplication::GetADepth (void)
 {
   return &ADepth;
-};
+}
 
 unsigned int *
 CApplication::GetAWhiteColor (void)
 {
   return &AWhiteColor;
-};
+}
 
 unsigned int *
 CApplication::GetABlackColor (void)
 {
   return &ABlackColor;
-};
+}
 
 
 
@@ -458,14 +452,14 @@ CApplication::OnHintTime(CControl* control)
     printf("%s\n",HintControl->GetHint().c_str());	  
     HTimer.SetTag(0);   
     HintControl=NULL;
-  };
+  }
 
   if( HTimer.GetTag() == 1 )
     HTimer.SetTag(2);   
   else  
     HTimer.SetTag(0);   
   
-};
+}
  */
 
 
@@ -476,7 +470,7 @@ CApplication::SetHintControl (CControl* hcontrol, int x, int y)
  HintTime = time (NULL);
  HintX = x;
  HintY = y;
-};
+}
 
 void
 CApplication::AddToColorTable (lxString colorname, XColor color,
@@ -495,7 +489,7 @@ CApplication::AddToColorTable (lxString colorname, XColor color,
   if (ColorTable)
     delete[]ColorTable;
   ColorTable = TempTable;
-};
+}
 
 bool CApplication::XSearchInColorTable (lxString name, XColor * color)
 {
@@ -504,10 +498,10 @@ bool CApplication::XSearchInColorTable (lxString name, XColor * color)
       {
 	*color = ColorTable[c].color;
 	return true;
-      };
+      }
 
   return false;
-};
+}
 
 bool CApplication::XSearchInColorTable (XColor * color)
 {
@@ -519,10 +513,10 @@ bool CApplication::XSearchInColorTable (XColor * color)
       {
 	*color = ColorTable[c].displaycolor;
 	return true;
-      };
+      }
   */
   return false;
-};
+}
 
 
 
@@ -558,6 +552,11 @@ CApplication::RemoveTimer (CTimer *tm)
       TimerList[c] = TimerList[c + 1];
      TimerList[TimerCount] = NULL;
      TimerCount--;
+     if(TimerCount == -1)
+     {
+       if (TimerList)
+         delete[]TimerList;
+     }
     }
    //printf("Timer %i Removed: %s\n",TimerCount,tm->GetName().c_str()); 
   }
@@ -594,6 +593,11 @@ CApplication::RemoveThread (CThread *td)
       ThreadList[c] = ThreadList[c + 1];
      ThreadList[ThreadCount] = NULL;
      ThreadCount--;
+     if(ThreadCount == -1)
+     {
+       if (ThreadList)
+         delete[]ThreadList;
+     }
     }
   }
 }

@@ -105,7 +105,9 @@ CControl::~CControl ()
 int
 CControl::Create (CControl * control)
 {
-  //printf("Created :(%s)\t%s - %s\n",control->GetName().c_str(),Class.c_str(),Name.c_str());	
+#ifdef _DEBUG	
+//  printf("Created :(%s)\t%s - %s\n",control->GetName().c_str(),Class.c_str(),Name.c_str());	
+#endif
   SetOwner (control);
   Win = control->Win;
   Paint = control->Paint;
@@ -143,7 +145,10 @@ CControl::Create (CControl * control)
 void
 CControl::Destroy (void)
 {
-//  eprint("Destroy "+GetClass()+"\n");
+#ifdef _DEBUG 
+//  if(Owner)
+//    printf("Destroy :(%s)\t%s - %s\n",Owner->GetName().c_str(),Class.c_str(),Name.c_str());	
+#endif
   DestroyChilds ();
   Erase ();
   if (Win != NULL)

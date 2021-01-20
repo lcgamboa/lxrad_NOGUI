@@ -28,7 +28,7 @@
   
 CColorDialog::CColorDialog (void)
 {
-  printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
+  //printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
   EvOnClose=NULL;
   CanVisible = false;
 }
@@ -41,7 +41,7 @@ CColorDialog::~CColorDialog (void)
 int
 CColorDialog::Create (CControl * control)
 {
-  printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
+  //printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
   return 0;
 }
 
@@ -63,7 +63,7 @@ return "";
 void 
 CColorDialog::SetColorName (lxString cname)
 {
-  printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
+  //printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
 }
 
 lxColor 

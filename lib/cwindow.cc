@@ -93,8 +93,10 @@ CWindow::WCreate (CWindow* window)
   
   on_create ();
   
-  if(Visible) Show ();
+  printf("Window [%s] create\n",Title.c_str()); 
   
+  if(Visible) Show ();
+ 
 }
 
 void
@@ -202,6 +204,7 @@ CWindow::Show (void)
       {
 	on_show ();
         show=1;
+        printf("Window [%s] show\n",Title.c_str()); 
       }
       SetVisible (true);
       Draw();
@@ -226,6 +229,7 @@ CWindow::Hide (void)
      on_hide ();
      show=0;
      SetVisible (false);
+     printf("Window [%s] hide\n",Title.c_str()); 
    }
 }
 
