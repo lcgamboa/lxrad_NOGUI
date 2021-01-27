@@ -264,7 +264,7 @@ bool
 CApplication::ProcessEvents (void)
 {
   //int wn = 0;
-  int ec=1;   //events in queue
+  //int ec=1;   //events in queue
  
  struct timeval tv;
  long int elapsed;
