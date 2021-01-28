@@ -58,12 +58,12 @@ while test $# -gt 0; do
       ;;
     --libs|--plugin-libs|--library-libs)
       libdirs="-L${exec_prefix}/lib "
-      echo $libdirs -llxrad_NOGUI -lopenal  -lminizip -lXpm -lImlib2 -lX11 -lpthread  
+      echo $libdirs -llxrad_NOGUI -lopenal  -lminizip -lpthread  
       ;;
     --static-libs)
 #    --libs|--static-libs)
       libdirs="-L${exec_prefix}/lib "
-      echo $libdirs -llxrad_NOGUI -lopenal  -lminizip -lXpm -lImlib2 -lX11 -lpthread 
+      echo $libdirs -llxrad_NOGUI -lopenal  -lminizip -lpthread 
       ;;
     *)
       echo "${usage}" 1>&2
