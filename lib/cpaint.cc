@@ -139,7 +139,7 @@ CPaint::LowerFrame (int x, int y, int w, int h, uint wb)
   XColor OldPen;
   for (uint c = 0; c < wb; c++)
     {
-      OldPen = Pen.GetColor ();
+      OldPen = Pen.GetFgColor ();
       Pen.SetColor (ColorByName ("gray35"));
       Line ( x + c, y + c, x + c, h - 2 - c);
       Line ( x + c, y + c, w - c - 1, y + c);
@@ -163,7 +163,7 @@ CPaint::RaiserFrame (int x, int y, int w, int h, uint wb)
   XColor OldPen;
   for (uint c = 0; c < wb; c++)
     {
-      OldPen = Pen.GetColor ();
+      OldPen = Pen.GetFgColor ();
       Pen.SetColor (ColorByName ("gray96"));
       Line ( x + c, y + c, x + c, h - 2 - c);
       Line ( x + c, y + c, w - c - 1, y + c);
@@ -251,14 +251,26 @@ CPaint::SetFgColor(lxString cname)
 void 
 CPaint::SetBgColor(unsigned char r,unsigned char g, unsigned char b)
 {
-   Pen.SetBGColor (ColorByRGB(r,g,b));
+   Pen.SetBgColor (ColorByRGB(r,g,b));
 }
 
 	
 void 
 CPaint::SetBgColor(lxString cname)
 {
-   Pen.SetBGColor (ColorByName(cname));
+   Pen.SetBgColor (ColorByName(cname));
+}
+  
+unsigned char 
+CPaint::GetFgColor(void)
+{
+  return Pen.GetFgColor();
+}
+
+unsigned char 
+CPaint::GetBgColor(void)
+{
+  return Pen.GetBgColor();
 }
 
 void 
@@ -315,14 +327,14 @@ void
 CPaint::SetColor(unsigned char r,unsigned char g, unsigned char b)
 {
   Pen.SetColor (ColorByRGB(r,g,b));
-  Pen.SetBGColor (ColorByRGB(r,g,b));
+  Pen.SetBgColor (ColorByRGB(r,g,b));
 }
 
 void 
 CPaint::SetColor(lxColor c)
 {
   Pen.SetColor (c);
-  Pen.SetBGColor (c);
+  Pen.SetBgColor (c);
 }
 
 void CPaint::SetFgColor(lxColor c)
@@ -332,7 +344,7 @@ void CPaint::SetFgColor(lxColor c)
 
 void CPaint::SetBgColor(lxColor c)
 {
-  Pen.SetBGColor (c);
+  Pen.SetBgColor (c);
 }
 
 void 

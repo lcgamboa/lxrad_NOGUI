@@ -42,8 +42,10 @@ public:
   };
   void Create (CControl * control, GC * gc){};
   void SetColor (XColor color){};
-  void SetBGColor (XColor color){};
-  XColor GetColor (void){return 0;};
+  void SetBgColor (XColor color){};
+  void SetFgColor (XColor color){};
+  XColor GetFgColor (void){return 0;};
+  XColor GetBgColor (void){return 0;};
   void SetWidth (unsigned long width){};
   void SetPen (int function){};
 };

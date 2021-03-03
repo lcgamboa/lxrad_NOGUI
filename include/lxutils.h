@@ -90,9 +90,9 @@ private:
 Imlib_Image Image;
 public:
 lxImage(Imlib_Image img);
-lxImage();
+lxImage(CWindow * window);
 ~lxImage();
-bool LoadFile(lxString fname);
+bool LoadFile(lxString fname, int orientation = 0 , float scalex = 1.0, float scaley = 1.0);
 void Destroy();
 operator Imlib_Image() const;
 };
@@ -116,7 +116,7 @@ private:
 Pixmap CPixmap;
 public:
 ~lxBitmap();
-lxBitmap (lxImage img, CWindow * win ,int orient=0);
+lxBitmap (lxImage * img, CWindow * win ,int orient=0);
 lxBitmap (int width, int height); 
 Pixmap  GetPixmap(void);
 operator Pixmap() const;
@@ -162,6 +162,9 @@ public:
   lxColor(unsigned char r, unsigned char g, unsigned char b);
   lxString GetAsString(int flags =0);
   operator XColor() const;
+  unsigned char Red(void){return 0;};
+  unsigned char Green(void){return 0;};
+  unsigned char Blue(void){return 0;};
 };
 
 class lxCursor

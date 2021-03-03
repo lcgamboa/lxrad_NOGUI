@@ -114,7 +114,7 @@ lxTextFile::AddLine(lxString line)
 
 //-------------------------------------------------------------------------
 
-lxImage::lxImage()
+lxImage::lxImage(CWindow * window)
 {
  Image = 0;
 }
@@ -133,7 +133,7 @@ lxImage::~lxImage()
 }
 
 bool
-lxImage::LoadFile(lxString fname)
+lxImage::LoadFile(lxString fname, int orientation, float scalex, float scaley)
 {
  Destroy ();
 
@@ -161,10 +161,8 @@ lxBitmap::~lxBitmap()
 
 }
 
-lxBitmap::lxBitmap(lxImage img, CWindow *win, int orient)
+lxBitmap::lxBitmap(lxImage * img, CWindow *win, int orient)
 {
- //FIXME use win parameter
- //
 }
 
 lxBitmap::lxBitmap(int width, int height)
@@ -678,6 +676,6 @@ ColorByName(lxString name)
 lxBitmap *
 lxGetBitmapRotated(lxImage *image, CWindow * win, int orientation)
 {
- return new lxBitmap (*image, win, orientation);
+ return new lxBitmap (image, win, orientation);
 }
 
