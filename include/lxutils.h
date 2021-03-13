@@ -222,12 +222,12 @@ public:
 #define lxMOUSE_BTN_RIGHT 0x01
 #define lxMOUSE_BTN_LEFT  0x02      
 
-#define LXK_SHIFT XK_Shift_L  
-#define LXK_RIGHT XK_Right
-#define LXK_LEFT  XK_Left
-#define LXK_DOWN  XK_Down
-#define LXK_UP    XK_Up
-#define LXK_CONTROL  XK_Control_L
+#define LXK_SHIFT 1  
+#define LXK_RIGHT 2
+#define LXK_LEFT  3
+#define LXK_DOWN  4
+#define LXK_UP    5
+#define LXK_CONTROL  6
 
 lxBitmap * lxGetBitmapRotated(lxImage *image, CWindow * win, int orientation); 
 

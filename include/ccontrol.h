@@ -223,5 +223,6 @@ public:
   void (CControl::*EvOnDraw) (CControl * control);
   void (CControl::*EvOnFocusIn) (CControl * control);
   void (CControl::*EvOnFocusOut) (CControl * control);
+  void (CControl::*EvMouseWheel) (CControl * control, int rotation);
 };
 #endif
