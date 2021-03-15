@@ -92,7 +92,7 @@ public:
 lxImage(Imlib_Image img);
 lxImage(CWindow * window);
 ~lxImage();
-bool LoadFile(lxString fname, int orientation = 0 , float scalex = 1.0, float scaley = 1.0);
+bool LoadFile(lxString fname, int orientation = 0 , float scalex = 1.0, float scaley = 1.0, int useAlpha = 1);
 void Destroy();
 operator Imlib_Image() const;
 };
