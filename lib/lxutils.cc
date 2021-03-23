@@ -679,3 +679,17 @@ lxGetBitmapRotated(lxImage *image, CWindow * win, int orientation)
  return new lxBitmap (image, win, orientation);
 }
 
+
+
+unsigned int 
+lxGetDisplayWidth(int disp)
+{
+  return 640;
+}
+
+unsigned int 
+lxGetDisplayHeight(int disp)
+{
+  return 480;
+}
+
