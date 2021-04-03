@@ -133,7 +133,7 @@ lxImage::~lxImage()
 }
 
 bool
-lxImage::LoadFile(lxString fname, int orientation, float scalex, float scaley, int useAlpha)
+lxImage::LoadFile(lxString fname, int orientation, float scalex, float scaley, int useAlpha, double * ret_sx, double * ret_sy)
 {
  Destroy ();
 
