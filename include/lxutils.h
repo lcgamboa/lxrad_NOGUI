@@ -165,6 +165,7 @@ public:
   unsigned char Red(void){return 0;};
   unsigned char Green(void){return 0;};
   unsigned char Blue(void){return 0;};
+  void Set(unsigned char r, unsigned char g, unsigned char b, unsigned char alpha = 0xFF);
 };
 
 class lxCursor
