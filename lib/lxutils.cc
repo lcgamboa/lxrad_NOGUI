@@ -4,7 +4,7 @@
 
    ########################################################################
 
-   Copyright (c) : 2001-2018  Luis Claudio Gamboa Lopes
+   Copyright (c) : 2001-2021  Luis Claudio Gamboa Lopes
 
    This program is free software; you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
@@ -33,6 +33,8 @@
 #include<sys/stat.h>
 #include <minizip/zip.h>
 #include <minizip/unzip.h>
+
+#include<pthread.h>
 
 //-------------------------------------------------------------------------
 
@@ -706,5 +708,60 @@ unsigned int
 lxGetDisplayHeight(int disp)
 {
   return 480;
+}
+
+
+
+lxMutex::lxMutex()
+{
+ Mutex = (void *) new pthread_mutex_t;
+ pthread_mutex_init ((pthread_mutex_t*) Mutex, NULL);
+}
+
+lxMutex::~lxMutex()
+{
+ delete (pthread_mutex_t*) Mutex;
+}
+
+void *
+lxMutex::GetMutex(void)
+{
+ return Mutex;
+}
+
+void
+lxMutex::Lock(void)
+{
+ pthread_mutex_lock ((pthread_mutex_t*) Mutex);
+}
+
+void
+lxMutex::Unlock(void)
+{
+ pthread_mutex_unlock ((pthread_mutex_t*) Mutex);
+}
+
+lxCondition::lxCondition(lxMutex & mutex)
+{
+ Mutex = mutex.GetMutex ();
+ Cond = (void *) new pthread_cond_t;
+ pthread_cond_init ((pthread_cond_t *) Cond, NULL);
+}
+
+lxCondition::~lxCondition()
+{
+ delete (pthread_cond_t*) Cond;
+}
+
+void
+lxCondition::Signal(void)
+{
+ pthread_cond_signal ((pthread_cond_t *) Cond);
+}
+
+void
+lxCondition::Wait(void)
+{
+ pthread_cond_wait ((pthread_cond_t *) Cond, (pthread_mutex_t*) Mutex);
 }
 
