@@ -520,7 +520,8 @@ lxStringList CControl::GetContext (void)
   Context.AddLine (xml_out (lxT("EvOnDraw"), lxT("Event"), btoa (GetEv ())));
   Context.AddLine (xml_out (lxT("EvOnFocusIn"), lxT("Event"), btoa (GetEv ())));
   Context.AddLine (xml_out (lxT("EvOnFocusOut"), lxT("Event"), btoa (GetEv ())));
- 
+  Context.AddLine (xml_out (lxT("EvMouseWheel"), lxT("Event"), btoa (GetEv ())));
+
   return Context;
 }
 
@@ -580,6 +581,8 @@ CControl::SetContext (lxStringList context)
       if (name.compare (lxT("EvOnFocusIn")) == 0)
 	SetEv (atob (value));
       if (name.compare (lxT("EvOnFocusOut")) == 0)
+	SetEv (atob (value));
+      if (name.compare (lxT("EvMouseWheel")) == 0)
 	SetEv (atob (value));
     }
 }
