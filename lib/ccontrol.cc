@@ -63,6 +63,7 @@ CControl::CControl (void)
   SetClass ("CControl");
   PopupMenu = NULL;
   CanVisible = true;
+  DragAcceptFiles = false;
   SetHint(""); 
   
   EvMouseMove = NULL;
@@ -78,6 +79,7 @@ CControl::CControl (void)
   EvOnDraw = NULL;
   EvOnFocusIn = NULL;
   EvOnFocusOut = NULL;
+  EvOnDropFile = NULL;
 
   CFont = NULL;
   ColorName = "";
@@ -137,6 +139,12 @@ CControl::Create (CControl * control)
       Enable=true;
       SetEnable(false);
     }
+
+    if(CanExecuteEvent && DragAcceptFiles)
+    {
+      SetDragAcceptFiles(DragAcceptFiles);
+    }
+
 
     return 1;
 }
@@ -403,6 +411,11 @@ CControl::Event (vEvent event)
 //  return 1;break;
 //  case Expose:  
 //  return 1;break;
+/*
+        case lxEVT_DROP_FILES:
+          on_drop_files ((wxDropFilesEvent*) & event);
+          break;
+*/
     default:
       //printf("default !!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
       return;
@@ -521,6 +534,7 @@ lxStringList CControl::GetContext (void)
   Context.AddLine (xml_out (lxT("EvOnFocusIn"), lxT("Event"), btoa (GetEv ())));
   Context.AddLine (xml_out (lxT("EvOnFocusOut"), lxT("Event"), btoa (GetEv ())));
   Context.AddLine (xml_out (lxT("EvMouseWheel"), lxT("Event"), btoa (GetEv ())));
+  Context.AddLine (xml_out (lxT ("EvOnDropFile"), lxT ("Event"), btoa (GetEv ())));
 
   return Context;
 }
@@ -584,6 +598,8 @@ CControl::SetContext (lxStringList context)
 	SetEv (atob (value));
       if (name.compare (lxT("EvMouseWheel")) == 0)
 	SetEv (atob (value));
+      if (name.compare (lxT ("EvOnDropFile")) == 0)
+        SetEv (atob (value));
     }
 }
 
@@ -1070,6 +1086,12 @@ CControl::GetFOwner (void)
   return FOwner;
 }
 
+void
+CControl::SetDragAcceptFiles(bool accept)
+{
+ DragAcceptFiles = accept;
+}
+
 //operators
 
 void *
@@ -1242,5 +1264,32 @@ bool
 CControl::GetCanVisible (void)
 {
   return CanVisible;
+}
+
+void
+CControl::on_drop_files(vEvent event)
+{
+ if ((FOwner) && (EvOnDropFile))
+  {
+/*
+   wxString name;
+   wxString* dropped = event->GetFiles ();
+   wxArrayString files;
+
+   for (int i = 0; i < event->GetNumberOfFiles (); i++)
+    {
+     name = dropped[i];
+     if (wxFileExists (name))
+      files.push_back (name);
+     else if (wxDirExists (name))
+      wxDir::GetAllFiles (name, &files);
+    }
+ 
+   for (size_t i = 0; i < files.size (); i++)
+    {
+     (FOwner->*EvOnDropFile) (this, (const char *) files[i].c_str ());
+    }
+*/
+  }
 }
 
