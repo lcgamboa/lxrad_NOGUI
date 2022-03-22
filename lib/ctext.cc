@@ -235,6 +235,12 @@ CText::GetCountLines(void)
  return Lines.GetLinesCount ();
 }
 
+lxString
+CText::GetLine (uint linen)
+{
+ return Lines.GetLine (linen);
+}
+
 void
 CText::SetText(const lxString t)
 {
