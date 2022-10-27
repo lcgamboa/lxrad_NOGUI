@@ -152,6 +152,7 @@ int x,y,width,height;
 }lxRect;
 
 #define lxCOLOR_WINDOWTEXT 8
+#define lxCOLOR_BTNFACE 15
 
 class lxColor
 {
