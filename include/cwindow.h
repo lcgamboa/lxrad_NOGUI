@@ -93,7 +93,7 @@ public:
   bool GetPixmapBuffer(void);
   bool LoadXMLContextAndCreateChilds(lxString filename, CControl* ctrl = NULL);
   bool GetCanExitExclusive(void);
-//propiedades
+//propriedades
   int GetWWindow (void);
   CWindow* GetWWidget (void);
   //Display *GetADisplay (void);
@@ -118,6 +118,8 @@ public:
   Pixmap GetPixmap(void);
   void SetLastControl (CControl * lastcontrol);
   void CirculateFocus (bool asc);
+  int GetClientHeight (void);
+  int GetClientWidth (void);
   //operator
   void *operator new (size_t sz);
   //eventos
