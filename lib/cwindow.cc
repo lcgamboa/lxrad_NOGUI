@@ -202,9 +202,9 @@ CWindow::Show (void)
     {
       if(!show)
       {
+        printf("Window [%s] show\n",Title.c_str()); 
 	on_show ();
         show=1;
-        printf("Window [%s] show\n",Title.c_str()); 
       }
       SetVisible (true);
       Draw();
@@ -226,10 +226,10 @@ CWindow::Hide (void)
 {
    if(show)
    {
+     printf("Window [%s] hide\n",Title.c_str()); 
      on_hide ();
      show=0;
      SetVisible (false);
-     printf("Window [%s] hide\n",Title.c_str()); 
    }
 }
 
@@ -683,12 +683,10 @@ CWindow::LoadXMLContextAndCreateChilds(lxString filename, CControl* ctrl)
   lxString line;
 
   file2 = fopen (filename.c_str(),"r");
-  rewind(file2);
-  
 
   if (file2)
     {
-
+      rewind(file2);
       if(ctrl == NULL)//for owner window
       {
         if(fgetline (file2, line))
