@@ -46,7 +46,7 @@ private:
   CThread **ThreadList;
   int ThreadCount;
   timeval LastDrawTime;
-  int PixelsCount;
+  unsigned int PixelsCount;
   TXColor *ColorTable;
   bool Exit;
   CControl* HintControl;

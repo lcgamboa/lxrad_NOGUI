@@ -630,6 +630,11 @@ new (size_t sz)
   return (void *) m;
 }
 
+void CWindow::operator delete(void* p)
+{
+  free(p);
+}
+
 //eventos
 
 void

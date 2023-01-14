@@ -480,7 +480,7 @@ CApplication::AddToColorTable (lxString colorname, XColor color,
   TXColor *TempTable;
   TempTable = new TXColor[PixelsCount + 1];
 
-  for (int c = 0; c < PixelsCount; c++)
+  for (unsigned int c = 0; c < PixelsCount; c++)
     TempTable[c] = ColorTable[c];
 
   TempTable[PixelsCount].name = colorname;
@@ -493,7 +493,7 @@ CApplication::AddToColorTable (lxString colorname, XColor color,
 
 bool CApplication::XSearchInColorTable (lxString name, XColor * color)
 {
-  for (int c = 0; c <= PixelsCount; c++)
+  for (unsigned int c = 0; c <= PixelsCount; c++)
     if (ColorTable[c].name.compare (name) == 0)
       {
 	*color = ColorTable[c].color;
@@ -506,7 +506,7 @@ bool CApplication::XSearchInColorTable (lxString name, XColor * color)
 bool CApplication::XSearchInColorTable (XColor * color)
 {
  /*
-  for (int c = 0; c <= PixelsCount; c++)
+  for (unsigned int c = 0; c <= PixelsCount; c++)
     if ((ColorTable[c].color.red == color->red)
 	&& (ColorTable[c].color.green == color->green)
 	&& (ColorTable[c].color.blue == color->blue))
