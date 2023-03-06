@@ -137,8 +137,12 @@ lxImage::~lxImage()
 bool
 lxImage::LoadFile(lxString fname, int orientation, float scalex, float scaley, int useAlpha, double * ret_sx, double * ret_sy)
 {
- Destroy ();
-
+  Destroy ();
+  return 1;
+}
+bool 
+lxImage::CreateBlank(const unsigned int width, const unsigned int height, int orientation, double scalex, double  scaley ){
+  Destroy ();
   return 1;
 }
 

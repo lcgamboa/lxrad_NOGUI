@@ -93,6 +93,7 @@ lxImage(Imlib_Image img);
 lxImage(CWindow * window);
 ~lxImage();
 bool LoadFile(lxString fname, int orientation = 0 , float scalex = 1.0, float scaley = 1.0, int useAlpha = 0, double * ret_sx=NULL, double * ret_sy=NULL);
+bool CreateBlank(const unsigned int width, const unsigned int height, int orientation = 0, double scalex = 1.0,  double  scaley = 1.0 );
 void Destroy();
 operator Imlib_Image() const;
 };
