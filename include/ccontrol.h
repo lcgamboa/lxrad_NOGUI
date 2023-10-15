@@ -150,6 +150,7 @@ public:
   lxString GetFontName (void);
   void SetFontSize (uint size);
   uint GetFontSize (void);
+  void SetFontFamily (int family);
   virtual void SetX (int x);
   int GetX (void);
   virtual void SetY (int y);

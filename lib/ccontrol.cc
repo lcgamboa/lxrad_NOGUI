@@ -739,6 +739,11 @@ CControl::GetFontSize (void)
 }
 
 void
+CControl::SetFontFamily (int family)
+{
+}
+
+void
 CControl::SetHint(lxString hint)
 {
   Hint=hint;
