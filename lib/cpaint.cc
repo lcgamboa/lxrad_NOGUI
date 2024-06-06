@@ -340,7 +340,16 @@ CPaint::Circle (bool filled, int x, int y, int radius)
 {
 }
   
+void 
+CPaint::Arc (bool filled, int x1, int y1, int x2, int y2, int xc, int yc)
+{
+}
 
+void 
+CPaint::EllipticArc(bool filled, int x, int y, int width, int height, double start, double end)
+{
+}
+  
 void 
 CPaint::SetColor(unsigned char r,unsigned char g, unsigned char b)
 {
