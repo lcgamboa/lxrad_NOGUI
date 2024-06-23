@@ -326,6 +326,21 @@ CPaint::SetFontWeight (const int weight)
 #endif
 }
 
+void 
+CPaint::FillPolygon (lxPoint * points, int npoints)
+{
+#ifdef _DEBUG	
+//  printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
+#endif  
+}
+
+void 
+CPaint::Lines (lxPoint * points, int npoints)
+{
+#ifdef _DEBUG	
+//  printf ("Incomplete: %s -> %s :%i\n", __func__,__FILE__, __LINE__);
+#endif 
+}
 
 
 void 

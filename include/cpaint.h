@@ -61,9 +61,9 @@ public:
   void SetFont (CControl * control);
   void SetPen (int function);
   void Point (int x, int y);
-  //void FillPolygon (XPoint * points, int npoints);
+  void FillPolygon (lxPoint * points, int npoints);
   void Line (int x1, int y1, int x2, int y2);
-  //void Lines (XPoint * points, int npoints);
+  void Lines (lxPoint * points, int npoints);
   void Rectangle (int x, int y, int w, int h);
   void Frame (int x, int y, int w, int h, uint wb = 1);
   void LowerFrame (int x, int y, int w, int h, uint wb = 1);
