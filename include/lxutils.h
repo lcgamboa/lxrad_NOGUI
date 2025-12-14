@@ -282,6 +282,7 @@ bool lxUnzipDir(const lxString &in_filename, const lxString &out_dirname);
 bool lxRemoveFile(const char* fname);
 bool lxRemoveDir(const char* dirname);
 bool lxCreateDir(const char * dirname);
+bool lxCopyFile(lxString srcfname, lxString dstfname);
 bool lxRenameFile(lxString oldfname, lxString newfname);
 
 unsigned int lxGetDisplayWidth(int disp);
