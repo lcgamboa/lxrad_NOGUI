@@ -286,6 +286,31 @@ lxColor::lxColor(const char * name)
   }
 }
 
+lxColor::lxColor(lxString sname)
+{
+ if (sname.c_str()[0] == '#')
+  {
+   unsigned int r, g, b;
+   char tmp[3];
+   tmp[2] = 0;
+   tmp[0] = sname.c_str()[1];
+   tmp[1] = sname.c_str()[2];
+   sscanf (tmp, "%02X", &r);
+   tmp[0] = sname.c_str()[3];
+   tmp[1] = sname.c_str()[4];
+   sscanf (tmp, "%02X", &g);
+   tmp[0] = sname.c_str()[5];
+   tmp[1] = sname.c_str()[6];
+   sscanf (tmp, "%02X", &b);
+
+   Color = ColorByRGB (r, g, b);
+  }
+ else
+  {
+   Color = ColorByName (sname.c_str());
+  }
+}
+
 lxColor::lxColor(unsigned char r, unsigned char g, unsigned char b)
 {
  Color = ColorByRGB (r, g, b);
@@ -296,8 +321,14 @@ lxColor::GetAsString(int flags)
 {
  char cname[20];
 
-
+ if (flags == lxC2S_HTML_SYNTAX)
+  {
+   sprintf (cname, "#%02X%02X%02X", (Color & 0xFF0000)>> 16, (Color & 0x00FF00) >> 8, Color&0x0000FF);
+  }
+ else
+  {
    cname[0] = 0;
+  }
 
  return cname;
 }
@@ -729,17 +760,16 @@ eprint(lxString error)
 };
 
 XColor
-ColorByRGB(unsigned short r, unsigned short g, unsigned short b)
+ColorByRGB(unsigned char r, unsigned char g, unsigned char b)
 {
-
- return 0;
-};
+ return  (r<<16)|(g<<8)|b;
+}
 
 XColor
 ColorByName(lxString name)
 {
  return 0;
-};
+}
 
 
 lxBitmap *

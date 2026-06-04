@@ -190,8 +190,13 @@ CWindow::WDestroy (void)
       WPaint.Destroy ();
 
       Win = NULL;
-      Application->ADestroyWindow (this);
-      WWindow = 0;
+      if(GetDynamic ()){
+        Application->ADestroyWindow (this);
+      }
+      else{
+        Application->ADestroyWindow (this);
+        WWindow = 0;
+      }
     }
 }
 

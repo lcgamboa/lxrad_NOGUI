@@ -59,7 +59,7 @@ void mprint(lxString message);
 
 void eprint(lxString error);
 
-XColor ColorByRGB (unsigned short r, unsigned short g, unsigned short b);
+XColor ColorByRGB (unsigned char r, unsigned char g, unsigned char b);
 
 XColor ColorByName (lxString name);
 
@@ -163,6 +163,7 @@ public:
   lxColor();
   lxColor(XColor color);
   lxColor(const char * name);
+  lxColor(lxString sname);
   lxColor(unsigned char r, unsigned char g, unsigned char b);
   lxString GetAsString(int flags =0);
   operator XColor() const;
