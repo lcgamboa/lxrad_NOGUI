@@ -734,6 +734,12 @@ lxListDirRec(const lxString & dirname)
 }
 
 lxString
+lxGetDocumentsDir(lxString appname)
+{
+ return lxString ("/home/") + getlogin () + "/Documents/";
+}
+
+lxString
 lxGetUserDataDir(lxString appname)
 {
  return lxString ("/home/") + getlogin () + "/." + appname;
